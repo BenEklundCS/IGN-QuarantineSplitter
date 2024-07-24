@@ -70,8 +70,8 @@ def split_xml(file_path, output_dir, max_size_mb):
         print(f"File not found: {file_path}")
     except Exception as e:
         print(f"Error processing file {file_path}: {e}")
-
-if __name__ == "__main__":
+        
+def main():
     # Make sure 4 cmdline args were provided
     if len(sys.argv) != 4:
         print("usage: ./qsplitter.py path/to/input_file.xml path/to/output_directory max_filesize_mb")
@@ -92,3 +92,6 @@ if __name__ == "__main__":
         
         
     split_xml(input_file, output_directory, max_filesize_mb)
+
+if __name__ == "__main__":
+    main()
