@@ -9,6 +9,7 @@ def get_header(xml_file):
         header_lines.append(line)
     return ''.join(header_lines)
 
+# Function to write the current part of the larger .xml
 def write_part(file_name, part_number, output_dir, header, current_part):
     # Footer (hardcoded)
     footer = "   </data>\n</cachedata>"
@@ -24,6 +25,8 @@ def write_part(file_name, part_number, output_dir, header, current_part):
     except Exception as e:
         print(f"Error writing part file {part_file_path}: {e}")
 
+# This function iterates through a quarantine.xml and divides it into "parts"
+# It ensures parts are divided on .xml tags that keep the file valid for import later on
 def split_xml(file_path, output_dir, max_size_mb):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -70,7 +73,7 @@ def split_xml(file_path, output_dir, max_size_mb):
         print(f"File not found: {file_path}")
     except Exception as e:
         print(f"Error processing file {file_path}: {e}")
-        
+
 def main():
     # Make sure 4 cmdline args were provided
     if len(sys.argv) != 4:
